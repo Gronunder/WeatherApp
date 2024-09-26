@@ -18,10 +18,13 @@ A PowerShell script to fetch and display a 5-day weather forecast for a specifie
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+
+
+
 Start #<- User Execution
   |
   v
-Fetch API Key from External File - Get Key from any kind of secrets manager. FOR Testing you can a plain txt file. 
+Fetch API Key from External File #Get Key from any kind of secrets manager. FOR Testing you can a plain txt file. 
   |
   v
 Check if API Key File Exists
