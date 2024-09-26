@@ -23,9 +23,7 @@ A PowerShell script to fetch and display a 5-day weather forecast for a specifie
 
 Start #<- User Execution
   |
-  |
 Fetch API Key from External File 
-  |
   |
 Check if API Key File Exists
   |--------------------|
