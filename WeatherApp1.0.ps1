@@ -34,7 +34,7 @@ function Get-5DayForecast {
 
         # Check if the response contains data and extract forecast information
         if ($response -and $response.list) {
-            $forecastData = $response.list | Select-Object -First 5
+            $forecastData = $response.list | Group-Object { $_.dt_txt.Split(" ")[0] } | Select-Object -First 5
 
             # Create a table to display the forecast information - Table created using official documenation
             $table = @()
