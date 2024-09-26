@@ -15,62 +15,9 @@ A PowerShell script to fetch and display a 5-day weather forecast for a specifie
 - Internet connection and probaly a source code editor like VS Code or Powershell editor. 
 
 ## Diagram or Flow of the script:  
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+![image](https://github.com/user-attachments/assets/6e0d2872-0496-4b0a-aa92-e29ffcd9da74)
 
-Check if API Key File Exists
-  |--------------------|
-  |                    |
-  v                    v
-File Not Found       File Found
-  |                    |
-  v                    v
-Display Error        Read API Key
-  |                    |
-  v                    v
-Exit                Check if API Key is Valid
-                      |--------------------|
-                      |                    |
-                      v                    v
-                Invalid API Key         Valid API Key
-                      |                    |
-                      v                    v
-                Display Error       Prompt for City Name
-                      |                    |
-                      v                    v
-                     Exit           Get-5DayForecast Function
-                                          |
-                                          v
-                                  Construct API URL
-                                          |
-                                          v
-                                  Send Web Request
-                                          |
-                                          v
-                              Check if Response Contains Data
-                                          |--------------------|
-                                          |                    |
-                                          v                    v
-                                No Valid Data             Valid Data <--------------------------
-                                          |                    |                               |
-                                          v                    v                               |
-                                    Display Error     Extract Forecast Information             |
-                                          |                    |                               |
-                                          v                    v                               |
-                                         Exit           Create Table                           |
-                                                            |                                  |
-                                                            v                                  |
-                                                  Add Color Coding                             |
-                                                            |                                  |
-                                                            v                                  |
-                                                      Output Table                             |
-                                                            |                                  |
-                                                            v                                  |
-                                                      Error Handling   ------------------------- #Error Handling should post if there is no data avaialbe aka $city in the API list of OpenWeatherMap. 
-                                                            |
-                                                            v
-                                                           End
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ## Setup Instructions
