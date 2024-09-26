@@ -27,19 +27,20 @@ function Get-5DayForecast {
     # 5-day forecast API URL or start building the API URL for bellow modules/steps. 
     $apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=$city&appid=$apiKey&units=metric"
 
-    # Call to fetch data and do debug if city not found in the list. 
+    # Call to fetch data and do debug if 'city' is not found in the list. 
+    # Send a request to the API of Open Weather Map. 
     try {
-        # Send a request to the API of Open Weather Map. 
         $response = Invoke-RestMethod -Uri $apiUrl -Method Get -ErrorAction Stop
 
-        # Check if the response contains data and extract forecast information
+         # Check if the response contains data and extract forecast information
         if ($response -and $response.list) {
             $forecastData = $response.list | Group-Object { $_.dt_txt.Split(" ")[0] } | Select-Object -First 5
 
             # Create a table to display the forecast information - Table created using official documenation
             $table = @()
-            foreach ($day in $forecastData) {
-                $date = $day.dt_txt.Split(" ")[0]  # I've used this split to remove the "Hour" and leave only "Date" in the output. Resource = YouTube video. 
+            foreach ($group in $forecastData) {  # This part should sort out the day, remove the time as it has 3h ticks only. Resoruces: Forums and Youtube. 
+                $day = $group.Group[0]  # Get the first entry for the day
+                $date = $group.Name     # Grouped by date, so this should sort them per day. Not sure how it works, but it does the job :). 
                 $tempMin = [math]::Round($day.main.temp_min)
                 $tempMax = [math]::Round($day.main.temp_max)
                 $tempAvg = [math]::Round(($tempMin + $tempMax) / 2)
