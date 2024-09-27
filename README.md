@@ -1,12 +1,23 @@
 # Weather App TASK
 
-A PowerShell script to fetch and display a 5-day weather forecast for a specified city using the OpenWeatherMap API. The script retrieves the API key from an external database/API's.
+A PowerShell script to fetch and display a 5-day weather forecast for a specified city using the OpenWeatherMap API. The script retrieves the weather via API key from an external database/API's.
+- Min,Max,Avg and current weather overview if it's clear sky, cloudy, windy etc. 
 
 ## Features
-- Fetches a 5-day weather forecast.
-- Supports city names in both Bulgarian(Cyrilic) and English. Other Languanges are not test! 
-- Displays minimum, maximum, and average temperatures in a formatted table with color-coded output.
+- Fetches a 5-day weather forecast. - Limiation of the Free Account in OpenWeatherMap. 
+- Dynamic city selection.
+- Supports city names in both Bulgarian(Cyrilic) and English. Other Languanges are not tested! 
+- Min,Max,Avg and current weather overview if it's clear sky, cloudy, windy etc. Temp is color-coded on it's intensity. 
 - Handles errors gracefully with informative messages.
+- Built around "https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={apiKey}&units=metric"
+
+## Bug's
+- Possible math issue for average tempetrature, as AvgTemp is calcualted localy due to API not available, thus there might be a better option to get AvgTemp. 
+- Due to the nature of 3h ticks, we might have discrepency in the MinTemp. 
+
+## Nice to have
+- Dynamic day selection. 
+- 5DayFroecast function to be separated into few smaller functions for better consumation of the code.  
 
 ## Prerequisites/Dependencies
 
