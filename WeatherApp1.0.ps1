@@ -14,7 +14,7 @@ if (-not $apiKey) {
 
 # Write-Host will promopt the user select a city. Engligh and Cirillic is test only! 
 # Nice to have: Basic list of cities in EU promp. 
-Write-Host "Please enter the name of the city (Cyrillic or English entries test):" -ForegroundColor Black -BackgroundColor Green
+Write-Host "Please enter the name of the city (Cyrillic or English entries tested):" -ForegroundColor Black -BackgroundColor Green
 $city = Read-Host
 
 # Main Function/Process to fetch and display the "5-day weather forecast" - I've done a 5 day due to a limimation on the API request of up-to 5-day forecast for free accounts. 
