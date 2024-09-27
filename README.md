@@ -1,29 +1,28 @@
-# Weather App TASK
+# Weather App Task
 
-A PowerShell script to fetch and display a 5-day weather forecast for a specified city using the OpenWeatherMap API. The script retrieves the weather via API key from an external database/API's.
-- Min,Max,Avg and current weather overview if it's clear sky, cloudy, windy etc. 
+A PowerShell script to fetch and display a 5-day weather forecast for a specified city using the OpenWeatherMap API. The script retrieves the weather via API call with private key from an external database/API's.
 
 ## Features
 - Fetches a 5-day weather forecast. - Limiation of the Free Account in OpenWeatherMap. 
 - Dynamic city selection.
-- Supports city names in both Bulgarian(Cyrilic) and English. Other Languanges are not tested! 
-- Min,Max,Avg and current weather overview if it's clear sky, cloudy, windy etc. Temp is color-coded on it's intensity. 
+- Supports city names in both Bulgarian (Cyrilic) and English. Other languages are not tested! 
+- Min, Max, Avg and current weather overview if it's clear sky, cloudy, windy, etc. Temp is color-coded on it's intensity. 
 - Handles errors gracefully with informative messages.
 - Built around "https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={apiKey}&units=metric"
 
 ## Bug's
-- Possible math issue for average tempetrature, as AvgTemp is calcualted localy due to API not available, thus there might be a better option to get AvgTemp. 
-- Due to the nature of 3h ticks, we might have discrepency in the MinTemp. 
+- Possible math issue for average temperature, as AvgTemp is calculated locally due to API not available, thus there might be a better option to get AvgTemp. 
+- Due to the nature of 3h ticks, we might have discrepancy in the MinTemp. 
 
 ## Nice to have
 - Dynamic day selection. 
-- 5DayFroecast function to be separated into few smaller functions for better consumation of the code.  
+- 5DayFroecast function to be separated into a few smaller functions for better consumption of the code.  
 
 ## Prerequisites/Dependencies
 
-- Windows PowerShell - Tested with latest version. 
-- An OpenWeatherMap API key - Registration is required and key needs time to propagate in order to be activated. 
-- Internet connection and probaly a source code editor like VS Code or Powershell editor. 
+- Windows PowerShell: Tested with the latest version. 
+- An OpenWeatherMap API key Registration is required, and the key needs time to propagate in order to be activated. 
+- Internet connection and probably a source code editor like VS Code or Powershell editor. 
 
 ## Diagram or Flow of the script:  
 
@@ -35,19 +34,19 @@ A PowerShell script to fetch and display a 5-day weather forecast for a specifie
 
 1. **Get an API Key**:
    - Sign up for an account at [OpenWeatherMap](https://openweathermap.org/).
-   - verify your email
-   - wait for key to be activated. 
-   - test your key with a sample CALL: https://api.openweathermap.org/geo/1.0/direct?q=London&limit=20&appid={Add_Your_API_Key}
+   - Verify your email.
+   - Wait for the key to be activated. 
+   - Test your key with a sample CALL: https://api.openweathermap.org/geo/1.0/direct?q=London&limit=20&appid={Add_Your_API_Key}
 
 2. **Create API Key File**:
    - Create a text file named `WeatherAPIkey.txt`.
-   - Paste your key into the txt file and move the file in C:/ location/folder and make sure that it has the correct rights. 
+   - Paste your key into the txt file and move the file to C:/ location/folder and make sure that it has the correct rights. 
    -
 
 3. **Download the repo localy and RUN**
    - Pull your repo from GitHub via your shell or gitBash if using Windows. "Git clone...." 
-   - Open Powershell with Admin rights and located the download folder fo the script. 
-   - run the script with ./script named
+   - Open Powershell with Admin rights and locate the download folder fo the script. 
+   - Run the script with ./{scriptname}
    - You might need to use -ExecutionPolicy Bypass if Powershell is not set to bypass the default execution policy. 
 
 
