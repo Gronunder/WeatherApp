@@ -1,18 +1,18 @@
 # Fetch the API key from an external file
 $apiKeyFilePath = "C:\WeatherAPIkey.txt"  # <- When using FilePath, please update your path if not in default location. !!! Haven't tested this with any Secrets Manager/Server !!!
 if (-not (Test-Path $apiKeyFilePath)) {
-    Write-Error "API key file not found at $apiKeyFilePath."
+    Write-Error "API key file not found at $apiKeyFilePath." -ForegroundColor Black -BackgroundColor Red  #Graceful Error
     exit
 }
 $apiKey = Get-Content -Path $apiKeyFilePath -ErrorAction Stop
 
 # Checkout step for APi validity. This step will shout out if there is an error/missing Key or unreconized file. 
 if (-not $apiKey) {
-    Write-Error "API key is empty or invalid."
+    Write-Error "API key is empty or invalid."  -ForegroundColor Black -BackgroundColor Red
     exit
 }
 
-# Write-Host will promopt the user select a city. Engligh and Cirillic is test only! 
+# Write-Host will promopt the user select a city. Engligh and Cirillic is tested only! 
 # Nice to have: Basic list of cities in EU promp. 
 Write-Host "Please enter the name of the city (Cyrillic or English entries tested):" -ForegroundColor Black -BackgroundColor Green
 $city = Read-Host
@@ -40,7 +40,7 @@ function Get-5DayForecast {
             $table = @()
             foreach ($group in $forecastData) {  # This part should sort out the day, remove the time as it has 3h ticks only. Resoruces: Forums and Youtube. 
                 $day = $group.Group[0]  # Get the first entry for the day
-                $date = $group.Name     # Grouped by date, so this should sort them per day. Not sure how it works, but it does the job :). 
+                $date = $group.Name     # Grouped by date and removed the time, due to the 3h ticks available for this API key. 
                 $tempMin = [math]::Round($day.main.temp_min)
                 $tempMax = [math]::Round($day.main.temp_max)
                 $tempAvg = [math]::Round(($tempMin + $tempMax) / 2)
@@ -62,8 +62,8 @@ function Get-5DayForecast {
     }
     catch {
         # Error/Issue handling. These are basic error messages that will be outputed at the same time, due the unified block. Idea is to navigate the end user to better troubleshoot the issue. Note: I managed to generate "cod":404 error only, as I think this the only one for the "City" API's. 
-        Write-Host "An error occurred while trying to fetch the weather data for ${city}." -ForegroundColor Red -BackgroundColor Yellow
-        Write-Host "API error details, or Error code: $_" -ForegroundColor Red # Display the error message
+        Write-Host "An error occurred while trying to fetch the weather data for ${city}." -ForegroundColor Black -BackgroundColor Red
+        Write-Host "API error details, or Error code: $_" -ForegroundColor Red 
     }
 }
 
