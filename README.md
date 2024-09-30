@@ -41,10 +41,10 @@ A PowerShell script to fetch and display a 5-day weather forecast for a specifie
 2. **Create API Key File**:
    - Create a text file named `WeatherAPIkey.txt`.
    - Paste your key into the txt file and move the file to C:/ location/folder and make sure that it has the correct rights. 
-   -
+   
 
 3. **Download the repo localy and RUN**
-   - Pull your repo from GitHub via your shell or gitBash if using Windows. "Git clone...." 
+   - Pull the repo from GitHub via your Shell or GitBash if using Windows. "Git clone...." 
    - Open Powershell with Admin rights and locate the download folder fo the script. 
    - Run the script with ./{scriptname}
    - You might need to use -ExecutionPolicy Bypass if Powershell is not set to bypass the default execution policy. 
